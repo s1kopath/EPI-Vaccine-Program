@@ -11,7 +11,6 @@ use App\Http\Controllers\Helplinecontroller;
 use App\Http\Controllers\PatientsListController;
 use App\Http\Controllers\HealthWorkerListController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\SignInUpController;
 use App\Http\Controllers\HealthWorkerSignInUpController;
 use App\Http\Controllers\PatientsSignInUpController;
 use App\Http\Controllers\PatientsProfileController;
@@ -50,7 +49,6 @@ Route::get('/services',[Servicescontroller::class,'list'])->name('services');
 Route::get('/helpline',[Helplinecontroller::class,'list'])->name('helpline');
 
 
-Route::get('/SignInUp',[SignInUpController::class,'list'])->name('SignInUp');
 
 
 

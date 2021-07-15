@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\HealthWorkerList;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HealthWorkerListController extends Controller
@@ -10,7 +11,8 @@ class HealthWorkerListController extends Controller
     public function list()
     {
         $worker = HealthWorkerList::all();
-        return view('content.healthWorkerList', compact('worker'));
+        $ageLimit = Carbon::today()->subYears(18)->format('Y-m-d');
+        return view('content.healthWorkerList', compact('worker','ageLimit'));
     }
 
 

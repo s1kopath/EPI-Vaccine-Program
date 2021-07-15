@@ -21,7 +21,20 @@
             </li>
 
             <li class="nav item nav-style">
-            <a class="nav-link" href="{{route('SignInUp')}}">Sing In</a>
+            {{-- <a class="nav-link" href="{{route('SignInUp')}}">Sing In</a>
+             --}}
+             <div class="dropdown nav-link">
+                <a class="text-decoration-none dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-interval="50">
+                    Sign In
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" data-toggle="tab" class="dropdown-link"
+                            href="{{ route('healthWorkerSignInUp') }}">HealthWorker</a></li>
+                    <li><a class="dropdown-item" data-toggle="tab" class="dropdown-link"
+                            href="{{ route('patientsSignInUp') }}">Patients</a></li>
+                </ul>
+            </div>
             </li>
         </ul>
         </nav>
