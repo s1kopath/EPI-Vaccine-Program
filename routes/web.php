@@ -14,8 +14,8 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\HealthWorkerSignInUpController;
 use App\Http\Controllers\PatientsSignInUpController;
 use App\Http\Controllers\PatientsProfileController;
-use App\Http\Controllers\HealthworkerProfileController;
-use App\Http\Controllers\HealthworkerNoticeController;
+use App\Http\Controllers\HealthWorkerProfileController;
+use App\Http\Controllers\HealthWorkerNoticeController;
 use App\Http\Controllers\StockUpdateController;
 
 use App\Http\Controllers\ReportController;
