@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\child_vaccine;
 use App\Models\ChildVaccineSchedule;
-use App\Models\PatientsList;
+use App\Models\Patientslist;
 use App\Models\teenageVaccine;
 use App\Models\TeenageVaccineSchedule;
 use App\Models\User;
@@ -14,42 +14,40 @@ use Illuminate\Http\Request;
 
 class PatientsListController extends Controller
 {
-
-    public function      list()
+    public function list()
     {
         $title='Product List';
         $patients = Patientslist::paginate(5);
-             return view('content.patientsList', compact('patients'));
+        return view('content.patientsList', compact('patients'));
     }
 
     public function search(Request $request)
     {
         $search=$request->search;
-        if($search){
-            $patients=PatientsList::where('reg_no','like','%'.$search.'%')->paginate(5);
-                            // ->orWhere('category','like','%'.$search.'%')
-        }else
-        {
-            $patients=PatientsList::paginate(5);
+        if ($search) {
+            $patients=Patientslist::where('reg_no', 'like', '%'.$search.'%')->paginate(5);
+        // ->orWhere('category','like','%'.$search.'%')
+        } else {
+            $patients=Patientslist::paginate(5);
         }
 
         // where(name=%search%)
         $title="Search result";
-        return view('content.patientsList',compact('title','patients','search'));
+        return view('content.patientsList', compact('title', 'patients', 'search'));
     }
 
     public function checkChild($id)
     {
         $patients = Patientslist::find($id);
-        $doses= ChildVaccineSchedule::where('patient_id',$id)->get();
-        return view('content.childvaccineschedule', compact('patients','doses'));
+        $doses= ChildVaccineSchedule::where('patient_id', $id)->get();
+        return view('content.childvaccineschedule', compact('patients', 'doses'));
     }
 
     public function checkTeenage($id)
     {
         $patients = Patientslist::find($id);
-        $teenage= TeenageVaccineSchedule::where('patient_id',$id)->get();
-         return view('content.teenageVaccineSchedule', compact('patients','teenage'));
+        $teenage= TeenageVaccineSchedule::where('patient_id', $id)->get();
+        return view('content.teenageVaccineSchedule', compact('patients', 'teenage'));
     }
 
 
@@ -65,7 +63,7 @@ class PatientsListController extends Controller
 
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'password'=>bcrypt ($password)
+                'password'=>bcrypt($password)
             ]);
 
 
@@ -86,40 +84,37 @@ class PatientsListController extends Controller
 
         ]);
 
-        if($request->category=='Child')
-        {
+        if ($request->category=='Child') {
 
 
         // dd($plist);
-        // $cv=child_vaccine::where('vaccineName'->starting_time)->get();
+            // $cv=child_vaccine::where('vaccineName'->starting_time)->get();
 
-        // dd($request-> all());
-        $cv=child_vaccine::all();
+            // dd($request-> all());
+            $cv=child_vaccine::all();
 
 
-            foreach($cv as $item)
-            ChildVaccineSchedule::create ([
+            foreach ($cv as $item) {
+                ChildVaccineSchedule::create([
                 'patient_id'=>$p->id,
                 'cv_id'=>$item->id,
                 // 'eligible_d'=>$p->dob,
                 // 'fst_d'=>$p->regDate,
 
             ]);
-        }
-
-
-else{
-    $tv=teenageVaccine::all();
-    $o_date=Carbon::create($p->dob)->addYears(15)->isoFormat('Y-M-D');
-    foreach($tv as $item)
-
-    TeenageVaccineSchedule::create ([
+            }
+        } else {
+            $tv=teenageVaccine::all();
+            $o_date=Carbon::create($p->dob)->addYears(15)->isoFormat('Y-M-D');
+            foreach ($tv as $item) {
+                TeenageVaccineSchedule::create([
         'patient_id'=>$p->id,
         'tv_id'=>$item->id,
         // 'eligible_date'=>$o_date,
 
     ]);
-}
+            }
+        }
 
 
 

@@ -81,7 +81,10 @@
                             <input type="file" name="Image" class="from-control">
                         </div>
 
-
+                        <div class="mb-3">
+                            <label  class="form-label text-start">* Default Password: 123456</label>
+                            
+                        </div>
 
 
                     </div>

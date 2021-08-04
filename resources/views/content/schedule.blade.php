@@ -13,8 +13,8 @@ use Carbon\carbon;
 
 <div>
     <h2>Child Vaccine Schedule</h2>
-    <h3>Patient Name: {{(auth()->user()->userProfile->name}}</h3>
-    <h4>Registration No:{{(auth()->user()->userProfile->reg_no}}</h4>
+    <h3>Patient Name: {{(auth()->user()->userProfile->name) }}</h3>
+    <h4>Registration No:{{(auth()->user()->userProfile->reg_no) }}</h4>
     <br>
     <div class=row>
     <div class="col-md-10 m-auto">

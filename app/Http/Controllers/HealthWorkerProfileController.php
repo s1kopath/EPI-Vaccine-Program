@@ -22,27 +22,30 @@ class HealthWorkerProfileController extends Controller
         $c_v = child_vaccine::all()->count();
         $t_v = teenageVaccine::all()->count();
         $stock = Stock::all()->sum('available_stock');
-        $stockShort = Stock::where('available_stock','<',10)->count();
+        $stockShort = Stock::where('available_stock', '<', 10)->count();
 
         if ($user->role == 'admin') {
             // dd('ok');
 
-        return view('content.healthWorkerProfile',compact(
-            'healthWorker','patients','c_v',
-            't_v','stock','stockShort'
-        ));
-
+            return view('content.healthWorkerProfile', compact(
+                'healthWorker',
+                'patients',
+                'c_v',
+                't_v',
+                'stock',
+                'stockShort'
+            ));
         }
         // dd($user->);
         // dd($worker)
-        return view('content.healthWorkerProfile',compact('user'));
-     }
-     public function changePassword()
+        return view('content.healthWorkerProfile', compact('user'));
+    }
+    public function changePassword()
     {
         return view('content.changePassword');
     }
 
-     public function updatePassword(Request $request)
+    public function updatePassword(Request $request)
     {
         if (!Hash::check($request->input('current_password'), auth()->user()->password)) {
             return redirect()->back()->with('error', 'Current Password does not match.');

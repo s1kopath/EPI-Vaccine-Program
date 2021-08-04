@@ -1,10 +1,11 @@
 <header class="mb-auto">
     <div>
-      <h3 class="float-md-start mb-0" style="font-family: 'Times New Roman', Times, serif;">EPI Vaccination Management</h3>
+        <h3 class="float-md-start mb-0" style="font-family: 'Times New Roman', Times, serif;">EPI Vaccination Management
+        </h3>
         <div>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-        <ul class="nav">
-            {{-- @if(auth()->user()->role=='admin')
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <ul class="nav">
+                    {{-- @if (auth()->user()->role == 'admin')
             <li class="nav item nav-style">
             <a class="nav-link active" aria-current="page" href="{{route('healthWorkerProfile')}}">Profile</a>
             </li>
@@ -26,7 +27,7 @@
             </li>
             @endif
 
-            @if(auth()->user()->role=='worker')
+            @if (auth()->user()->role == 'worker')
 
             <li class="nav item nav-style">
                 <a class="nav-link active" aria-current="page" href="{{route('healthWorkerProfile')}}">Profile</a>
@@ -41,17 +42,17 @@
                 </li>
             @endif --}}
 
-            <li class="nav item nav-style">
-            @auth
-                <span class="nav-link text-dark">{{auth()->user()->name}}</span>
-                <a class="nav-link" href="{{route('HWlogout')}}">Log Out</a>
-                @else
-                <a class="nav-link" href="{{route('healthWorkerSignInUp')}}">Log In</a>
+                    <li class="nav item nav-style">
+                        @auth
+                            <span class="nav-link text-dark">{{ auth()->user()->name }}</span>
+                            <a class="nav-link" href="{{ route('HWlogout') }}">Log Out</a>
+                        @else
+                            <a class="nav-link" href="{{ route('healthWorkerSignInUp') }}">Log In</a>
 
-            @endauth
-            </li>
-        </ul>
-        </nav>
+                        @endauth
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </header>

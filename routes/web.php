@@ -17,7 +17,6 @@ use App\Http\Controllers\PatientsProfileController;
 use App\Http\Controllers\HealthWorkerProfileController;
 use App\Http\Controllers\HealthWorkerNoticeController;
 use App\Http\Controllers\StockUpdateController;
-
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TeenageVaccineScheduleController;
 
