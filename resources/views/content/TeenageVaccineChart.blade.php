@@ -2,19 +2,19 @@
 
 @section('content')
 
-<br>
-@if(auth()->user()->role=='admin')
-    {{-- button --}}
-    <div class= "text-start">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-            Add New Vaccine (teenage)
-        </button>
-    </div>
+    <br>
+    @if (auth()->user()->role == 'admin' && count($teenage)<3)
+        {{-- button --}}
+        <div class="text-start">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                Add New Vaccine (teenage)
+            </button>
+        </div>
     @endif
-<br>
+    <br>
 
 
-<h2>Teenage Vaccine Chart</h2>
+    <h2>Teenage Vaccine Chart</h2>
 
     <div>
         <table class="table table-light">
@@ -33,8 +33,8 @@
 
                     <tr>
                         <th scope="row">{{ $data->V_d_Name }}</th>
-                        <td>{{ $data->disease}}</td>
-                        <td>{{ $data->Schedule }}</td>
+                        <td>{{ $data->disease }}</td>
+                        <td>After {{ $data->Schedule }} week</td>
 
                         {{-- <td>{{ $data->category }}</td> --}}
                     </tr>
@@ -78,22 +78,22 @@
                         <div class="form-group text-dark">
                             <label for="exampleInputEmail3 ">Disease Name</label>
                             <input type="text" class="form-control" name="disease" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter schedule">
+                                aria-describedby="emailHelp" placeholder="Enter schedule">
                         </div>
                         <div class="form-group text-dark">
                             <label for="exampleInputEmail3 ">Schedule</label>
-                            <input type="text" class="form-control" name="Schedule" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter schedule">
+                            <input type="number" class="form-control" name="Schedule" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="In weeks">
                         </div>
 
 
-                         <br>
+                        <br>
 
                         <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#exampleModal3">
-                                    Submit
-                            </button>
-                         <br>
+                            Submit
+                        </button>
+                        <br>
                 </form>
                 {{-- from end --}}
 
